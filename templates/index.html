@@ -16,12 +16,16 @@
         <div class="input-container">
             <textarea 
                 class="input-box" 
-                placeholder="Enter your movie review or any movie-related text to analyze its emotions..."
+                placeholder="Enter your script, dialogue or any movie-related text to analyze its emotions..."
                 id="textInput"
             ></textarea>
             <button class="analyze-btn" id="analyzeBtn">
                 ⚡
             </button>
+        </div>
+
+        <div id="loadingIndicator" style="display: none; color: #aaa; margin-top: 20px;">
+        ⏳ Analyzing emotions...
         </div>
 
         <div class="result-container" id="resultContainer">
@@ -46,12 +50,13 @@
         
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="{{ url_for('static', filename='script.js') }}"></script>
     <!-- <script src="../static/script.js"></script> -->
 
-    <footer style="text-align: center; margin-top: 60px; color: #aaa; font-size: 0.9rem;">
-        Made with ❤️ using Hugging Face & Flask | © Emotif 2025
+    <footer id="footer" style="text-align: center; margin-top: 60px; color: #aaa; font-size: 0.9rem;">
+        <!-- JS will populate this -->
     </footer>
 
 </body>

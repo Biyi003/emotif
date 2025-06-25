@@ -1,4 +1,6 @@
-document.getElementById("analyzeBtn").addEventListener("click", async () => {
+const analyzeBtn = document.getElementById("analyzeBtn");
+
+analyzeBtn.addEventListener("click", async () => {
   const text = document.getElementById("textInput").value;
 
   if (!text.trim()) {
@@ -6,22 +8,36 @@ document.getElementById("analyzeBtn").addEventListener("click", async () => {
     return;
   }
 
-  const response = await fetch("http://localhost:5000/analyze", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({ text })
-  });
+  // Set button to loading state
+  analyzeBtn.innerHTML = "⏳";
+  analyzeBtn.disabled = true;
 
-  const result = await response.json();
+  try {
+    // const response = await fetch("http://localhost:5000/analyze", {
+  const response = await fetch("https://emotif.onrender.com/analyze", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ text })
+    });
 
-  if (result.error) {
-    alert("Error: " + result.error);
-    return;
+    const result = await response.json();
+
+    if (result.error) {
+      alert("Error: " + result.error);
+    } else {
+      showResults(result);
+    }
+
+  } catch (error) {
+    alert("Request failed. Please try again.");
+    console.error(error);
   }
 
-  showResults(result);
+  // Reset button state
+  analyzeBtn.innerHTML = "⚡";
+  analyzeBtn.disabled = false;
 });
 
 function showResults(data) {
@@ -86,11 +102,19 @@ function renderChart(labels, values) {
     },
     options: {
       responsive: true,
+
       plugins: {
         legend: {
           labels: {
-            color: 'white' // ← makes legend text white
+            color: '#fff'
           }
+        },
+        datalabels: {
+          color: '#fff',
+          font: {
+            weight: 'bold'
+          },
+          formatter: (value) => `${value}%`
         },
         tooltip: {
           bodyColor: 'white',
@@ -98,6 +122,7 @@ function renderChart(labels, values) {
         }
       }
     }
+    // ,plugins: [ChartDataLabels]  // 👈 This is where you add it
   });
 
 }
@@ -139,6 +164,13 @@ function renderBarChart(labels, values) {
           labels: {
             color: '#fff'
           }
+        },
+        datalabels: {
+          color: '#fff',
+          font: {
+            weight: 'bold'
+          },
+          formatter: (value) => `${value}%`
         }
       }
     }
@@ -154,3 +186,5 @@ for (const [emotion, percent] of Object.entries(data)) {
   values.push(percent);
 }
 
+document.getElementById('footer').innerHTML =
+  `Made by Adebiyi using Hugging Face & Flask ❤️ | © Emotif ${new Date().getFullYear()}`;
