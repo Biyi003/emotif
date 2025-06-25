@@ -12,6 +12,7 @@ filelock==3.18.0
 Flask==3.1.1
 flask-cors==6.0.0
 fsspec==2025.5.1
+gunicorn==23.0.0
 h11==0.16.0
 html5lib==1.1
 huggingface-hub==0.32.4
