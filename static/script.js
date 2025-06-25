@@ -25,29 +25,43 @@ document.getElementById("analyzeBtn").addEventListener("click", async () => {
 });
 
 function showResults(data) {
-  const resultsDiv = document.getElementById("resultContainer");
+  if (!data || typeof data !== 'object') {
+    alert("Invalid response format.");
+    return;
+  }
+
+  if (data.error) {
+    alert("API Error: " + data.error);
+    return;
+  }
+
+  const resultContainer = document.getElementById("resultContainer");
   const sentimentResult = document.getElementById("sentimentResult");
   const confidenceFill = document.getElementById("confidenceFill");
   const confidenceText = document.getElementById("confidenceText");
 
-  const emotionScores = data.emotions;
-  const mainEmotion = data.main_emotion;
-  const confidence = emotionScores[mainEmotion] || 0;
+  // Determine main emotion
+  const sorted = Object.entries(data).sort((a, b) => b[1] - a[1]);
+  const [mainEmotion, confidence] = sorted[0];
 
-  sentimentResult.textContent = `😶 Dominant Emotion: ${mainEmotion}`;
+  // Display main result
+  sentimentResult.textContent = `${mainEmotion.toUpperCase()} Detected`;
   confidenceFill.style.width = `${confidence}%`;
   confidenceText.textContent = `Confidence: ${confidence}%`;
 
-  // For Chart display
-  const labels = Object.keys(emotionScores);
-  const values = Object.values(emotionScores);
+  resultContainer.style.display = 'block';
+
+  // Chart rendering
+  const labels = [];
+  const values = [];
+
+  for (const [emotion, percent] of sorted) {
+    labels.push(emotion);
+    values.push(percent);
+  }
 
   renderChart(labels, values);
-
-  // Make result container visible
-  resultsDiv.style.display = 'block';
 }
-
 
 let chart;
 function renderChart(labels, values) {
