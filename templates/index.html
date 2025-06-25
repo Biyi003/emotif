@@ -55,9 +55,24 @@
     <script src="{{ url_for('static', filename='script.js') }}"></script>
     <!-- <script src="../static/script.js"></script> -->
 
-    <footer id="footer" style="text-align: center; margin-top: 60px; color: #aaa; font-size: 0.9rem;">
+<p style="font-size: 0.75rem; color: #aaa; text-align: center; margin-top: 60px;">
+  Made by Adebiyi using Hugging Face & Flask ❤️ | © Emotif 
+  <span id="year"></span>
+</p>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+
+    <!-- <script>
+        document.getElementById('footer').innerHTML =
+        `Made by Adebiyi using Hugging Face & Flask ❤️ | © Emotif ${new Date().getFullYear()}`;
+    </script> -->
+
+    <!-- <footer id="footer" style="text-align: center; margin-top: 60px; color: #aaa; font-size: 0.9rem;"> -->
         <!-- JS will populate this -->
-    </footer>
+    <!-- </footer> -->
 
 </body>
 </html>

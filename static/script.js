@@ -186,5 +186,7 @@ for (const [emotion, percent] of Object.entries(data)) {
   values.push(percent);
 }
 
-document.getElementById('footer').innerHTML =
-  `Made by Adebiyi using Hugging Face & Flask ❤️ | © Emotif ${new Date().getFullYear()}`;
+// document.addEventListener("DOMContentLoaded", function () {
+//   document.getElementById('footer').innerHTML =
+//     `Made by Adebiyi using Hugging Face & Flask ❤️ | © Emotif ${new Date().getFullYear()}`;
+// });
