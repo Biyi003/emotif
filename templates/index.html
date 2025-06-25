@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emotif - Movie Emotion Analysis</title>
+    <link rel="stylesheet" href="../static/styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="title">Emotif</h1>
+            <p class="subtitle">Movie Emotion Analysis</p>
+        </div>
+
+        <div class="input-container">
+            <textarea 
+                class="input-box" 
+                placeholder="Enter your movie review or any movie-related text to analyze its emotions..."
+                id="textInput"
+            ></textarea>
+            <button class="analyze-btn" id="analyzeBtn">
+                ⚡
+            </button>
+        </div>
+
+        <div class="result-container" id="resultContainer">
+            <div class="sentiment-result" id="sentimentResult"></div>
+            <div class="confidence-bar">
+                <div class="confidence-fill" id="confidenceFill"></div>
+            </div>
+            <p id="confidenceText" style="margin-top: 10px; color: #aaa;"></p>
+        </div>
+
+        <div class="features">
+            <div class="feature-tag">🎭 Emotion Detection</div>
+            <div class="feature-tag">📊 Confidence Scoring</div>
+            <div class="feature-tag">🎬 Movie Reviews</div>
+            <div class="feature-tag">⚡ Real-time Analysis</div>
+            <div class="feature-tag">📈 Emotion Breakdown</div>
+        </div>
+        <div id="results" style="margin-top: 20px;"></div>
+
+        <canvas id="emotionChart" width="400" height="400" style="margin-top: 40px;"></canvas>
+        
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <!-- <script src="../static/script.js"></script> -->
+</body>
+</html>
