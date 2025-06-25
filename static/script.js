@@ -61,6 +61,9 @@ function showResults(data) {
   }
 
   renderChart(labels, values);
+
+  renderBarChart(labels, values);
+
 }
 
 let chart;
@@ -98,6 +101,50 @@ function renderChart(labels, values) {
   });
 
 }
+
+let barChart;
+function renderBarChart(labels, values) {
+  const ctx = document.getElementById('emotionBarChart').getContext('2d');
+
+  if (barChart) barChart.destroy();
+
+  barChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels,
+      datasets: [{
+        label: 'Emotions',
+        data: values,
+        backgroundColor: '#ffa500',
+        borderRadius: 4
+      }]
+    },
+    options: {
+      responsive: true,
+      scales: {
+        y: {
+          ticks: {
+            color: '#fff',
+            beginAtZero: true
+          }
+        },
+        x: {
+          ticks: {
+            color: '#fff'
+          }
+        }
+      },
+      plugins: {
+        legend: {
+          labels: {
+            color: '#fff'
+          }
+        }
+      }
+    }
+  });
+}
+
 
 for (const [emotion, percent] of Object.entries(data)) {
   if (emotion === "main_emotion") continue;

@@ -41,12 +41,18 @@
         </div>
         <div id="results" style="margin-top: 20px;"></div>
 
-        <canvas id="emotionChart" width="400" height="400" style="margin-top: 40px;"></canvas>
+        <canvas id="emotionChart" width="300" height="300" style="margin-top: 40px;"></canvas>
+        <canvas id="emotionBarChart" width="400" height="300" style="margin-top: 40px;"></canvas>
         
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="{{ url_for('static', filename='script.js') }}"></script>
     <!-- <script src="../static/script.js"></script> -->
+
+    <footer style="text-align: center; margin-top: 60px; color: #aaa; font-size: 0.9rem;">
+        Made with ❤️ using Hugging Face & Flask | © Emotif 2025
+    </footer>
+
 </body>
 </html>
