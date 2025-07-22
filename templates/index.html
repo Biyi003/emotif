@@ -10,7 +10,7 @@
     <div class="container">
         <div class="header">
             <h1 class="title">Emotif</h1>
-            <p class="subtitle">Movie Emotion Analysis</p>
+            <p class="subtitle">Emotion Analysis</p>
         </div>
 
         <div class="input-container">
@@ -39,9 +39,10 @@
         <div class="features">
             <div class="feature-tag">🎭 Emotion Detection</div>
             <div class="feature-tag">📊 Confidence Scoring</div>
-            <div class="feature-tag">🎬 Movie Reviews</div>
+            <div class="feature-tag">🎬 Movie Emotion Analysis</div>
             <div class="feature-tag">⚡ Real-time Analysis</div>
             <div class="feature-tag">📈 Emotion Breakdown</div>
+            <div class="feature-tag">⏳ Full Movie Emotion Analysis Capabilities Coming Soon</div>
         </div>
         <div id="results" style="margin-top: 20px;"></div>
 
@@ -53,7 +54,6 @@
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="{{ url_for('static', filename='script.js') }}"></script>
-    <!-- <script src="../static/script.js"></script> -->
 
 <p style="font-size: 0.75rem; color: #aaa; text-align: center; margin-top: 60px;">
   Made by Adebiyi using Hugging Face & Flask ❤️ | © Emotif 
@@ -63,16 +63,6 @@
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
 </script>
-
-
-    <!-- <script>
-        document.getElementById('footer').innerHTML =
-        `Made by Adebiyi using Hugging Face & Flask ❤️ | © Emotif ${new Date().getFullYear()}`;
-    </script> -->
-
-    <!-- <footer id="footer" style="text-align: center; margin-top: 60px; color: #aaa; font-size: 0.9rem;"> -->
-        <!-- JS will populate this -->
-    <!-- </footer> -->
 
 </body>
 </html>
